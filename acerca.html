@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miproyecto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/templatemo.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+
+</head>
+<body>
+     <!-- Encabezado de la pagina -->
+    <div id="header"></div>
+
+        <section class="bg-light py-5">
+        <div class="container">
+            <div class="row align-items-center py-5">
+                <div class="col-md-8 text-green">
+                    <h1>Sobre nosotros</h1>
+                    <p>
+                       Somos un equipo apasionado por la electrónica y comprometido con la excelencia, 
+                       brindando no solo productos de calidad, sino también asesoría especializada para 
+                       impulsar ideas desde la etapa de diseño hasta la implementación. Nuestro compromiso 
+                       con la innovación, el servicio personalizado y la integridad nos distingue en un mercado 
+                       exigente y en constante evolución.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <img src="assets/img/about-hero.svg" alt="About Hero">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-light py-5">
+        <div class="container">
+            <div class="row align-items-center py-5">
+                <div class="col-md-6 text-black">
+                    <h1>Mision</h1>
+                    <p>
+                       Ofrecer soluciones tecnológicas de calidad en componentes electrónicos, audio profesional, 
+                       video y accesorios, facilitando el desarrollo de proyectos innovadores para profesionales, 
+                       estudiantes y empresas del sector. Nos comprometemos con la asesoría técnica, la excelencia 
+                       en el servicio y el abastecimiento confiable.
+                    </p>
+                </div>  
+                <div class="col-md-8 text-black">
+                    <h1>Vision</h1>
+                    <p>
+                       Ser la empresa líder en Latinoamérica en la comercialización de componentes electrónicos, 
+                       equipos de audio y video, destacándonos por la innovación, el respaldo técnico y la construcción 
+                       de relaciones de confianza con nuestros clientes y aliados estratégicos.
+                    </p>
+                </div> 
+            </div>
+        </div>
+    </section>
+ 
+     <div id="footer"></div>
+
+     <!-- Start Script -->
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/templatemo.js"></script>
+    <script src="js/custom.js"></script>
+    <!-- End Script -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            cargarFragmento("header", "header.html");
+            cargarFragmento("footer", "footer.html");
+        });
+    </script>
+
+</body>
+</html>
