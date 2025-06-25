@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miproyecto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
@@ -22,7 +23,7 @@
 
 </head>
 <body>
-
+     <!-- Encabezado de la pagina -->
     <div id="header"></div>
 
     <!-- Start Banner Hero -->
@@ -56,6 +57,7 @@
             <div class="col-lg-6 mb-0 d-flex align-items-center">
                 <div class="text-align-left align-self-center">
                     <h1 class="h1 text-success"><b>${banner.titulo}</b></h1>
+                    <h3 class="h2">${banner.subtitulo}</h3>
                     <p>${banner.descripcion}</p>
                     <p class="text-center">
                         <a class="btn btn-success" href="#">Ver Más</a>
@@ -65,19 +67,19 @@
         </div>
     </div>
     `;
-    carouselItem.appendChild(item);
-    const indicators = document.querySelector('.carousel-indicators');
-    const indicator = document.createElement('li');
-    indicator.setAttribute('data-bs-target', '#template-mo-zay-hero-carousel');
-    indicator.setAttribute('data-bs-slide-to', index);
-    if (index === 0) {
-        indicator.className = 'active';
-    }
-    indicators.appendChild(indicator);
-  
-});
+        carouselItem.appendChild(item);
 
+         // agregar indicadores
 
+            const indicators = document.querySelector('.carousel-indicators');
+            const indicator = document.createElement('li');
+            indicator.setAttribute('data-bs-target', '#template-mo-zay-hero-carousel');
+            indicator.setAttribute('data-bs-slide-to', index);
+            if (index === 0) {
+                indicator.className = 'active';
+            }
+            indicators.appendChild(indicator);
+        });
     </script>
     <!-- End Banner Hero -->
 
@@ -91,9 +93,9 @@
                 </p>
             </div>
         </div>
-        <div class="row" id="catagorias">
-            
-        </div>
+
+     <div class="row" id="categorias">
+    </div>
            
     </section>
 
@@ -101,19 +103,20 @@
         const categorias = obtenerCategorias();
         categorias.forEach(cat => {
             const tarjeta = document.createElement('div');
-            tarjeta.className = 'col-12 col-md-4 p-5 mt-3';
+            tarjeta.className = 'col-12 col-lg-3 col-md-4 col-sm-6 p-5 mt-3';
             tarjeta.innerHTML= `
              <a href="#"><img src="${cat.imagen}" class="rounded-circle img-fluid border"></a>
              <h5 class="text-center mt-3">${cat.nombre}</h5>
              <p class="text-center">${cat.descripcion}</p>
-             <p class="text-center">< a class="btn btn-succes" href="#">Shop Electronic</a></p>
+             <p class="text-center">< a class="btn btn-success" href="productos.html?categoria=${cat.codigo}">Ver productos</a></p>
+             <hr>
             `;
-            document.getElementById('categorias').appendChild(tarjetas);
+            document.getElementById('categorias').appendChild(tarjeta);
 
         });
     </script>
 
-    <!-- End Categories of The Month -->
+     <!-- End Categories of The Month -->
 
     <div id="footer"></div>
 

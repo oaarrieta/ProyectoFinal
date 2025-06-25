@@ -21,3 +21,16 @@ function  obtenerBanners() {
     const map = obtenerMap("banners");
     return map.values();
 }
+
+// Devolver la lista de productos
+function  obtenerProductos(categoria = "todos") {
+    const map = obtenerMap("productos");
+    // return map.values();
+    let productos = [];
+    if (categoria === "todos") {
+        productos = map.values();
+    } else {
+        productos = map.values().filter(prod => prod.categoria === categoria);
+    }
+    return productos;
+}
