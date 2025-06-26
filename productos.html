@@ -30,9 +30,13 @@
     <div class="container py-5">
         <div class="row">
 
-            <div class="col-lg-3" 
-                <h1 class="h2 pb-4">Categories</h1>
+       <!-- Mostrar las categorias para filtrar productos -->  
+            <div class="col-lg-2">
+                <h1 class="h2 pb-4">Categorias</h1>
                 <ul class="list-unstyled"  id="categorias">
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="productos.html?categoria=todos">Todas las categorias</a>
+                    </li>
                 </ul>
             </div> 
             <script>
@@ -42,19 +46,28 @@
                         const li = document.createElement('li');
                         li.className = 'pb-3';
                         li.innerHTML = `
-                                <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                                ${categoria.nombre}</a>
+                                <a class="collapsed d-flex justify-content-between h3 text-decoration-none" 
+                                href="productos.html?categoria=${categoria.codigo}">${categoria.nombre}</a>
                         `;
                         categoriasContainer.appendChild(li);
                     });
             </script>
 
-            <div class="col-lg-9">
+            <div class="col-lg-7">
                 <div class="row" id="productos">
-                </div>
+             </div>
+        
+                <!-- Mostrar todos los productos -->
                 <script>
-                    const productos = obtenerProductos();
+                    // Obtener el parametro de la URL
+                   const urlParams = new URLSearchParams(window.location.search);
+                   const categoria = urlParams.get('categoria');
+                   
+                    // Obtener productos de la categoria seleccionada
+
+                    const productos = obtenerProductos(categoria);
                     const productosContainer = document.getElementById('productos');
+
                     productos.forEach(producto => {
                         const col = document.createElement('div');
                         col.className = 'col-md-4';
@@ -76,8 +89,8 @@
                                     <p class="text-center mb-0"> $${producto.precio}</p>
                                     <ul class="list-unstyled d-flex justify-content-center mb-1">
                                         <li>
-                                            ${'i class="text-warning fa fa-star"'.repeat(producto.calificacion)}
-                                            ${'i class="text-muted fa fa-star"'.repeat(5 - producto.calificacion)}
+                                            ${'<i class="text-warning fa fa-star"></i>'.repeat(producto.calificacion)}
+                                            ${'<i class="text-muted fa fa-star"></i>'.repeat(5 - producto.calificacion)}
                                         </li>
                                     </ul>
                                 </div>
@@ -85,24 +98,9 @@
                         `;
                         productosContainer.appendChild(col);
                     });
+                    </script>
 
-                    /* Mostrar estrellas correctamente usando elementos <i> */
-
-                    productosContainer.querySelectorAll('ul.d-flex li').forEach((li, idx) => {
-                        const producto = productos[idx];
-                        let estrellas = '';
-                        for (let i = 0; i < producto.calificacion; i++) {
-                            estrellas += '<i class="text-warning fa fa-star"></i>';
-                        }
-                        for (let i = producto.calificacion; i < 5; i++) {
-                            estrellas += '<i class="text-muted fa fa-star"></i>';
-                        }
-                        li.innerHTML = estrellas;
-                    });
-
-                </script>
-
-                    <!-- Paginacion -->
+                <!-- Paginacion -->
 
                     <div class="row">
                     <ul class="pagination pagination-lg justify-content-end">
@@ -118,11 +116,22 @@
                     </ul>
                 </div>
             </div>
+            <!--fin mostrar los productos   -->
 
+            <div class="col-lg-3 bg-light p-5">
+                <h3 class="h3 pb-2">carrito de compras</h3>
+                <!-- precio total -->
+                <p class="text-right pb-2">Total: $ <span id="total">0</span></p>
+                <!-- Elementos del carrito -->
+                <ul id="carrito" class="list-group"></ul>
+
+                    <div id="boton-vaciar" class="btn btn-danger text-decoration-none" onclick="vaciarCarrito()">Vaciar Carrito</div>
+                <div class="btn btn-success text-decoration-none" id="boton-pagar">
+                    <a class="text-decoration-none btn-success text-white" href="pago.html" target="tarjet-blank">Pagar</a>
+                </div>
+            </div>
         </div>
     </div>
-
-
 
       <!-- Pie de pagina --> 
      <div id="footer"></div>
