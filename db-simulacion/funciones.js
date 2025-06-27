@@ -36,6 +36,16 @@ function  obtenerProductos(categoria = "todos") {
 }
 
 // Funciones para la manipulacion del carrito de compras
+function obtenerCarrito() {
+    let carrito = sessionStorage.getItem("carrito");
+    if (carrito) {
+        return JSON.parse(carrito);
+    } else {
+        return [];
+        
+    }
+}
+// Mostrar productos añadidos al carrito de compras
 function mostrarCarrito() {
     const carrito = obtenerCarrito();
     const carritoContainer = document.getElementById("carrito");
@@ -51,13 +61,13 @@ function mostrarCarrito() {
                 <h6 class="my-0">${producto.nombre}</h6>
                 <small>${producto.descripcion}</small>
             </div>
-            <a class="btn btn-danger text-decoration-none text-white" href="#" onclick="eliminarCurso(${index})" >
+            <a class="btn btn-danger text-decoration-none text-white" href="#" onclick="eliminarProducto(${index})" >
                 <i class="fa fa-times"></i>
             </a>
         </div>`;
 
     carritoContainer.appendChild(li);
-    precio += producto.precio * producto.cantidad;
+    precio += producto.precio;
 });
 const total = document.getElementById("total");
 total.innerHTML = precio.toFixed(2);

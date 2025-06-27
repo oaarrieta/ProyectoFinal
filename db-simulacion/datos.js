@@ -6,7 +6,7 @@ categorias = {
     "102" : { codigo: "102", nombre: "Audio", 
             descripcion: "", imagen: "img/cat102.jpeg" },
     "103" : { codigo: "103", nombre: "Video", 
-            descripcion: "", imagen: "img/cat103.jpeg" },
+            descripcion: "", imagen: "img/cat103.jpeg" }
 };
 
 localStorage.setItem("categorias", JSON.stringify(categorias));
@@ -34,3 +34,4 @@ productos = {
 };
 
 localStorage.setItem("productos", JSON.stringify(productos));
+console.log("productos guardados:", localStorage.getItem("productos"));
