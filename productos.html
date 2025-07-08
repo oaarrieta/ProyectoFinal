@@ -77,8 +77,8 @@
                                     <img class="card-img rounded-0 img-fluid" src="${producto.imagen}">
                                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                         <ul class="list-unstyled">
-                                
-                                            <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
+
+                                            <li><a class="btn btn-success text-white mt-2" href="detalles_producto.html?codigoProducto=${producto.codigo}"><i class="far fa-eye"></i></a></li>
                                             <li><a class="btn btn-success text-white mt-2 boton-add" href="#"><i class="fas fa-cart-plus"></i></a></li>
                                         </ul>
                                     </div>
@@ -125,8 +125,9 @@
             </div>
             <!--fin mostrar los productos   -->
 
+            <!-- Inicio carrito de compras -->
             <div class="col-lg-3 bg-light p-5">
-                <h3 class="h3 pb-2">carrito de compras</h3>
+                <h3 class="h3 pb-2">Carrito de compras</h3>
                 <!-- precio total -->
                 <p class="text-right pb-2">Total: $ <span id="total">0</span></p>
                 <!-- Elementos del carrito -->
@@ -137,8 +138,13 @@
                     <a class="text-decoration-none btn-success text-white" href="pago.html" target="tarjet-blank">Pagar</a>
                 </div>
             </div>
+        <script>
+            mostrarCarrito();
+        </script>
         </div>
+        
     </div>
+    // Fin de listado de productos
 
       <!-- Pie de pagina --> 
      <div id="footer"></div>

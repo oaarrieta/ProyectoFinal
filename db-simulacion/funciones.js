@@ -47,45 +47,57 @@ function obtenerCarrito() {
 }
 // Mostrar productos añadidos al carrito de compras
 function mostrarCarrito() {
-    const carrito = obtenerCarrito();
-    const carritoContainer = document.getElementById("carrito");
-    carritoContainer.innerHTML = ""; // Limpiar el contenido del carrito
-    let precio = 0;
+        const carrito = obtenerCarrito();
+        const carritoContainer = document.getElementById("carrito");
+        carritoContainer.innerHTML = "..."; // Limpiar el contenido del carrito
+        let precio = 0;
 
-    carrito.forEach((producto, index) => {
-        const li = document.createElement("li");
-        li.className = 'list-group-item d-flex justify-content-between mb-2';
-        li.innerHTML = `
-            <div class="d-flex justify-content-between align-items-center">
-            <div class="row">
-                <h6 class="my-0">${producto.nombre}</h6>
-                <small>${producto.descripcion}</small>
-            </div>
-            <a class="btn btn-danger text-decoration-none text-white" href="#" onclick="eliminarProducto(${index})" >
+        carrito.forEach((producto, index) => {
+            const li = document.createElement("li");
+            li.className = 'list-group-item d-flex justify-content-between mb-2';
+            li.innerHTML = `
+             <div class="d-flex justify-content-between align-items-center">
+                <div class="row">
+                    <h6 class="my-0">${producto.nombre}</h6>
+                    <small>${producto.descripcion}</small>
+                </div>
+                <a class="btn btn-danger text-decoration-none text-white" href="#" onclick="eliminarProducto(${index})" >
                 <i class="fa fa-times"></i>
             </a>
-        </div>`;
+         </div>`;
 
-    carritoContainer.appendChild(li);
-    precio += producto.precio;
-});
-const total = document.getElementById("total");
-total.innerHTML = precio.toFixed(2);
+        carritoContainer.appendChild(li);
+        precio += producto.precio;
+     });
+    const total = document.getElementById("total");
+    total.innerHTML = precio.toFixed(2);
+
+    document.getElementById('contadorCarrito').textContent = carrito.length;
+
 }
 
 // agregar un producto al carrito
-function agregarProducto(producto) {
+function agregarProducto(producto, actualizarCarrito = true) {
     let carrito = obtenerCarrito();
     carrito.push(producto);
     sessionStorage.setItem("carrito", JSON.stringify(carrito));
-    mostrarCarrito();
+    // Actualizar el contador del carrito
+    sessionStorage.setItem("contadorCarrito", carrito.length);
+    
+    if (actualizarCarrito === true) {
+        mostrarCarrito();
+    }
 }
 
 // eliminar un producto del carrito
 function eliminarProducto(index) {
     let carrito = obtenerCarrito();
     carrito.splice(index, 1);
+    
     sessionStorage.setItem("carrito", JSON.stringify(carrito));
+    // Actualizar el contador del carrito
+    sessionStorage.setItem("contadorCarrito", carrito.length);
+
     mostrarCarrito();
 }
 
@@ -95,3 +107,15 @@ function vaciarCarrito() {
     sessionStorage.setItem("carrito", JSON.stringify(carrito));
     mostrarCarrito();
 }
+
+// obtener producto por codigo
+function obtenerProducto(codigoProducto) {
+    const productos = obtenerMap("productos");
+    const respuesta = productos.get(codigoProducto);
+    if (!respuesta) {
+        throw new Error(`No se encontró el producto con el código: ${codigoProducto}`);
+    }
+    return respuesta;
+ 
+}
+

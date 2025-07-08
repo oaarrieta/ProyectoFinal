@@ -23,13 +23,14 @@ banners = {
 localStorage.setItem("banners", JSON.stringify(banners));
 
 productos = {
-    "1011": {codigo: "1011", nombre: "Transistores", descripcion: "PNP, NPN", categoria: "101", imagen: "img/prod110.jpeg", precio : 10000, clasificacion : 4.5 },
+    "1011": {codigo: "1011", nombre: "Transistores", descripcion: "Transistores PNP y NPN de alta calidad para tus proyectos de electronica.", categoria: "101", imagen: "img/prod110.jpeg", precio : 10000, 
+        clasificacion : 4.5 },
 
-    "1012": {codigo: "1012", nombre: "Etapas de potencia para tus amplificadores", descripcion: "Selecciona la tarjerta que mas se ajuste a tu proyecto",
+    "1012": {codigo: "1012", nombre: "Etapas de potencia de alta calidad para tus amplificadores.", descripcion: "Selecciona la tarjerta que mas se ajuste a tu proyecto",
             categoria: "102", imagen: "img/prod120.jpeg", precio : 12000, clasificacion : 4.0 },
 
-    "1020": {codigo: "1020", nombre: "Equipos de reproducion para videos", descripcion: "Encuentra tus elementos y componentes necesario para reapoducir tus videos en todo tipo de ambientes",
-            categoria: "103", imagen: "img/prod130.jpeg", precio : 60000, clasificacion : 4.8 },
+    "1020": {codigo: "1020", nombre: "Camara de alta calidad de imagen para tu PC", descripcion: "Encuentra tus elementos y componentes necesario para reapoducir tus videos en todo tipo de ambientes",
+            categoria: "103", imagen: "img/prod130.jpeg", precio : 60000, clasificacion : 4.8},
 
 };
 
